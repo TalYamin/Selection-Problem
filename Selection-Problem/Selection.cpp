@@ -2,7 +2,6 @@
 
 const Person& randSelection(vector<Person>& personArr, int k, int& numComp)
 {
-	
 	Person* p;
 	int left = 0;
 	int right = personArr.size()-1;
@@ -38,7 +37,7 @@ int partition(vector<Person>& personArr, int left, int right, int randIndex, int
 
 	int pivot = left;
 	int nonPivot = right;
-	bool nonPivotIsOnLeft = true;
+	bool nonPivotIsOnRight = true;
 
 	swap(personArr[left], personArr[randIndex]);
 
@@ -46,8 +45,10 @@ int partition(vector<Person>& personArr, int left, int right, int randIndex, int
 		numComp++;
 		if (personArr[pivot].getPersonId() > personArr[nonPivot].getPersonId()){
 			swap(personArr[pivot], personArr[nonPivot]);
+			swap(pivot, nonPivot);
+			nonPivotIsOnRight = !nonPivotIsOnRight;
 		}
-		if (nonPivotIsOnLeft){
+		if (nonPivotIsOnRight){
 			nonPivot--;
 		}
 		else {
