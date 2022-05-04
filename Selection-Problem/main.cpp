@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void getInputFromUser(int& seed);
+void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k);
 
 void main() {
 
@@ -18,15 +18,13 @@ void main() {
 	int numComp = 0;
 	vector<Person> personArr;
 	
-	getInputFromUser(seed);
+	getInputFromUser(seed,numOfPersons, personArr, k);
 	srand(seed);
-
-	
 	randSelection(personArr, k, numComp);
 
 }
 
-void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr) {
+void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k) {
 
 	Person p;
 	string input;
@@ -39,6 +37,8 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr) {
 		extractPersonFromInput(input, p);
 		personArr.push_back(p);
 	}
+	getline(cin, input);
+	k = stoi(input);
 }
 
 void extractPersonFromInput(string input, Person& p) {
