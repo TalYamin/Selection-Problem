@@ -9,6 +9,7 @@
 using namespace std;
 
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k);
+void extractPersonFromInput(string input, Person& p);
 
 void main() {
 
@@ -43,7 +44,6 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 
 void extractPersonFromInput(string input, Person& p) {
 
-	Person p;
 	size_t pos = input.find(DELIIMITER);
 	string token = input.substr(0, pos);
 	p.setPersonId(stoi(token));
