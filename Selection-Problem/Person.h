@@ -6,7 +6,7 @@ using namespace std;
 
 class Person {
 
-	int personId;
+	int personId = 0;
 	string personName;
 
 public:
