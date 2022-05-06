@@ -23,6 +23,6 @@ public:
 	void searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent);
 	BinarySearchNode* getMinKey(BinarySearchNode* curr);
 	BinarySearchNode* inOrderByIndexWrapper(int k);
-	BinarySearchNode* inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode* kNode, int k);
+	void inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode* kNode, int k);
 	void HandleError();
 };
