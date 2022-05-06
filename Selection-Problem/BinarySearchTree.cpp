@@ -4,6 +4,14 @@ BinarySearchTree::~BinarySearchTree()
 {
 }
 
+void BinarySearchTree::buildBST(vector<Person>& personArr){
+
+	for (int i = 0; i < personArr.size(); i++){
+		insertToBST(personArr[i]);
+	}
+
+}
+
 BinarySearchNode* BinarySearchTree::FindInBST(int personId) {
 
 	BinarySearchNode* currNode = root;
@@ -25,7 +33,7 @@ BinarySearchNode* BinarySearchTree::FindInBST(int personId) {
 void BinarySearchTree::insertToBST(Person p) {
 
 	if (FindInBST(p.getPersonId()) != nullptr) {
-		//Handle Error
+		handleError();
 	}
 	BinarySearchNode* temp = root;
 	BinarySearchNode* parent = nullptr;

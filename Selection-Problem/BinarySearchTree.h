@@ -1,6 +1,8 @@
 #pragma once
 
 #include "BinarySearchNode.h"
+#include "Utils.h"
+#include <vector>
 
 class BinarySearchTree {
 
@@ -13,6 +15,7 @@ public:
 	~BinarySearchTree();
 
 	//public functions
+	void buildBST(vector<Person>& personArr);
 	BinarySearchNode* FindInBST(int personId);
 	void insertToBST(Person p);
 	void deleteFromBST(BinarySearchNode*& currRoot, int personId);
