@@ -168,7 +168,7 @@ void BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNo
 		if (k == 0) {
 			kNode = currRoot;
 		}
-		inOrderByIndex(currRoot->getRight(), kNode, --k);
+		inOrderByIndex(currRoot->getRight(), kNode,--k);
 	}
 }
 
