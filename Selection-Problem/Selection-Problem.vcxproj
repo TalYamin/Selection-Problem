@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BinarySearchNode.cpp" />
+    <ClCompile Include="BinarySearchTree.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Selection.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BinarySearchNode.h" />
+    <ClInclude Include="BinarySearchTree.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Selection.h" />
   </ItemGroup>
