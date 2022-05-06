@@ -1,6 +1,6 @@
 #include "BinarySearchNode.h"
 
-BinarySearchNode::BinarySearchNode(Person _person, BinarySearchNode* _left, BinarySearchNode* _right){
+BinarySearchNode::BinarySearchNode(Person* _person, BinarySearchNode* _left, BinarySearchNode* _right){
 
 	person = _person;
 	left = _left;
@@ -11,12 +11,12 @@ BinarySearchNode::~BinarySearchNode(){
 
 }
 
-Person BinarySearchNode::getPerson() const
+Person* BinarySearchNode::getPerson()
 {
 	return person;
 }
 
-void BinarySearchNode::setPerson(Person _person){
+void BinarySearchNode::setPerson(Person* _person){
 
 	person = _person;
 }

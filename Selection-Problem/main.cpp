@@ -21,8 +21,8 @@ void main() {
 	
 	getInputFromUser(seed,numOfPersons, personArr, k);
 	srand(seed);
-	randSelection(personArr, k, numComp);
-
+//	randSelection(personArr, k, numComp);
+	BST(personArr, k, numComp);
 }
 
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k) {

@@ -31,6 +31,8 @@ Person* select(vector<Person>& personArr, int left, int right, int k, int& numCo
 }
 
 
+
+
 int partition(vector<Person>& personArr, int left, int right, int randIndex, int& numComp) {
 
 	int pivot = left;
@@ -67,4 +69,13 @@ int partition(vector<Person>& personArr, int left, int right, int randIndex, int
 	}
 
 	return pivot;
+}
+
+const Person& BST(vector<Person>& personArr, int k, int& numComp)
+{
+	BinarySearchTree* bst = new BinarySearchTree();
+	BinarySearchNode* res;
+	bst->buildBST(personArr, numComp);
+	res = bst->inOrderByIndexWrapper(k);
+	return *(res->getPerson());
 }
