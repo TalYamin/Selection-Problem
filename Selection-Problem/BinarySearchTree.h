@@ -15,9 +15,11 @@ public:
 	~BinarySearchTree();
 
 	//public functions
-	void buildBST(vector<Person>& personArr);
-	BinarySearchNode* FindInBST(int personId);
-	void insertToBST(Person p);
+	bool isEmptyBST();
+	void makeEmptyBST();
+	void buildBST(vector<Person>& personArr, int& numComp);
+	BinarySearchNode* FindInBST(int personId, int& numComp);
+	void insertToBST(Person p, int& numComp);
 	void deleteFromBST(BinarySearchNode*& currRoot, int personId);
 	void searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent);
 	BinarySearchNode* getMinKey(BinarySearchNode* curr);

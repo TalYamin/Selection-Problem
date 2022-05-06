@@ -1,25 +1,36 @@
 #include "BinarySearchTree.h"
 
-BinarySearchTree::~BinarySearchTree()
-{
+BinarySearchTree::~BinarySearchTree(){
 }
 
-void BinarySearchTree::buildBST(vector<Person>& personArr){
+bool BinarySearchTree::isEmptyBST()
+{
+	if (root == nullptr){
+		return true;
+	}
+	return false;
+}
+
+void BinarySearchTree::makeEmptyBST(){
+	root = nullptr;
+}
+
+void BinarySearchTree::buildBST(vector<Person>& personArr, int& numComp){
 
 	for (int i = 0; i < personArr.size(); i++){
-		insertToBST(personArr[i]);
+		insertToBST(personArr[i],numComp);
 	}
 
 }
 
-BinarySearchNode* BinarySearchTree::FindInBST(int personId) {
+BinarySearchNode* BinarySearchTree::FindInBST(int personId, int& numComp) {
 
 	BinarySearchNode* currNode = root;
 	while (currNode != nullptr) {
-		if (personId == (currNode->getPerson().getPersonId())) {
+		if (numComp++, personId == (currNode->getPerson().getPersonId())) {
 			return currNode;
 		}
-		else if (personId < (currNode->getPerson().getPersonId())) {
+		else if (numComp++, personId < (currNode->getPerson().getPersonId())) {
 			currNode = currNode->getLeft();
 		}
 		else {
@@ -30,9 +41,9 @@ BinarySearchNode* BinarySearchTree::FindInBST(int personId) {
 	return nullptr;
 }
 
-void BinarySearchTree::insertToBST(Person p) {
+void BinarySearchTree::insertToBST(Person p, int& numComp) {
 
-	if (FindInBST(p.getPersonId()) != nullptr) {
+	if (FindInBST(p.getPersonId(), numComp) != nullptr) {
 		handleError();
 	}
 	BinarySearchNode* temp = root;
@@ -41,7 +52,7 @@ void BinarySearchTree::insertToBST(Person p) {
 
 	while (temp != nullptr) {
 		parent = temp;
-		if (p.getPersonId() < temp->getPerson().getPersonId()) {
+		if (numComp++, p.getPersonId() < temp->getPerson().getPersonId()) {
 			temp = temp->getLeft();
 		}
 		else {
@@ -52,7 +63,7 @@ void BinarySearchTree::insertToBST(Person p) {
 	if (parent == nullptr) {
 		root = newNode;
 	}
-	else if (p.getPersonId() < parent->getPerson().getPersonId()) {
+	else if (numComp++, p.getPersonId() < parent->getPerson().getPersonId()) {
 		parent->setLeft(newNode);
 	}
 	else {
