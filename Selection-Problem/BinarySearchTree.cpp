@@ -4,11 +4,11 @@ BinarySearchTree::~BinarySearchTree()
 {
 }
 
-BinarySearchNode* BinarySearchTree::FindInBST(int personId){
+BinarySearchNode* BinarySearchTree::FindInBST(int personId) {
 
 	BinarySearchNode* currNode = root;
-	while (currNode != nullptr){
-		if (personId == (currNode->getPerson().getPersonId())){
+	while (currNode != nullptr) {
+		if (personId == (currNode->getPerson().getPersonId())) {
 			return currNode;
 		}
 		else if (personId < (currNode->getPerson().getPersonId())) {
@@ -22,9 +22,9 @@ BinarySearchNode* BinarySearchTree::FindInBST(int personId){
 	return nullptr;
 }
 
-void BinarySearchTree::insertToBST(Person p){
+void BinarySearchTree::insertToBST(Person p) {
 
-	if (FindInBST(p.getPersonId()) != nullptr){
+	if (FindInBST(p.getPersonId()) != nullptr) {
 		//Handle Error
 	}
 	BinarySearchNode* temp = root;
@@ -33,7 +33,7 @@ void BinarySearchTree::insertToBST(Person p){
 
 	while (temp != nullptr) {
 		parent = temp;
-		if (p.getPersonId() < temp->getPerson().getPersonId()){
+		if (p.getPersonId() < temp->getPerson().getPersonId()) {
 			temp = temp->getLeft();
 		}
 		else {
@@ -41,7 +41,7 @@ void BinarySearchTree::insertToBST(Person p){
 		}
 	}
 	newNode = new BinarySearchNode(p, nullptr, nullptr);
-	if (parent==nullptr){
+	if (parent == nullptr) {
 		root = newNode;
 	}
 	else if (p.getPersonId() < parent->getPerson().getPersonId()) {
@@ -52,6 +52,84 @@ void BinarySearchTree::insertToBST(Person p){
 	}
 }
 
-void BinarySearchTree::deleteFromBST(int personId)
-{
+void BinarySearchTree::deleteFromBST(BinarySearchNode*& currRoot, int personId) {
+
+	BinarySearchNode* parent = nullptr;
+	BinarySearchNode* curr = currRoot;
+
+	searchKey(curr, personId, parent);
+
+	if (curr == nullptr) {
+		return;
+	}
+
+	if (curr->getLeft() == nullptr && curr->getRight() == nullptr) {
+		if (curr != currRoot) {
+			if (parent->getLeft() == curr) {
+				parent->setLeft(nullptr);
+			}
+			else {
+				parent->setRight(nullptr);
+			}
+		}
+		else {
+			currRoot = nullptr;
+		}
+
+		delete curr;
+	}
+
+
+	else if (curr->getLeft() != nullptr && curr->getRight() != nullptr) {
+		BinarySearchNode* successor = getMinKey(curr->getRight());
+		Person p = successor->getPerson();
+		deleteFromBST(currRoot, successor->getPerson().getPersonId());
+		curr->setPerson(p);
+	}
+
+	else {
+		BinarySearchNode* child;
+		if (curr->getLeft() != nullptr) {
+			child = curr->getLeft();
+		}
+		else {
+			child = curr->getRight();
+		}
+		if (curr != currRoot) {
+			if (curr == parent->getLeft()){
+				parent->setLeft(child);
+			}
+			else {
+				parent->setRight(child);
+			}
+		}
+		else {
+			currRoot = child;
+		}
+		delete curr;
+	}
+
+}
+
+
+void BinarySearchTree::searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent) {
+
+	while (curr != nullptr && curr->getPerson().getPersonId() != personId) {
+		parent = curr;
+
+		if (personId < curr->getPerson().getPersonId()) {
+			curr = curr->getLeft();
+		}
+		else {
+			curr = curr->getRight();
+		}
+	}
+}
+
+BinarySearchNode* BinarySearchTree::getMinKey(BinarySearchNode* curr) {
+	while (curr->getLeft() != nullptr) {
+		curr = curr->getLeft();
+	}
+
+	return curr;
 }

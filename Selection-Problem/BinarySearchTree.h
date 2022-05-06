@@ -15,5 +15,7 @@ public:
 	//public functions
 	BinarySearchNode* FindInBST(int personId);
 	void insertToBST(Person p);
-	void deleteFromBST(int personId);
+	void deleteFromBST(BinarySearchNode*& currRoot, int personId);
+	void searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent);
+	BinarySearchNode* getMinKey(BinarySearchNode* curr);
 };
