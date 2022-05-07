@@ -43,8 +43,7 @@ int partition(vector<Person>& personArr, int left, int right, int randIndex, int
 
 	while (pivot != nonPivot){
 		if (nonPivotIsOnRight){
-			numComp++;
-			if (personArr[pivot].getPersonId() > personArr[nonPivot].getPersonId()) {
+			if (numComp++, personArr[pivot].getPersonId() > personArr[nonPivot].getPersonId()) {
 				swap(personArr[pivot], personArr[nonPivot]);
 				swap(pivot, nonPivot);
 				nonPivotIsOnRight = !nonPivotIsOnRight;
@@ -55,8 +54,7 @@ int partition(vector<Person>& personArr, int left, int right, int randIndex, int
 			}
 		}
 		else {
-			numComp++;
-			if (personArr[nonPivot].getPersonId() > personArr[pivot].getPersonId()) {
+			if (numComp++, personArr[nonPivot].getPersonId() > personArr[pivot].getPersonId()) {
 				swap(personArr[nonPivot], personArr[pivot]);
 				swap(nonPivot, pivot);
 				nonPivotIsOnRight = !nonPivotIsOnRight;
