@@ -2,6 +2,10 @@
 
 #include "BinarySearchNode.h"
 #include <vector>
+#include<iostream> //for test
+
+
+using namespace std; //for test
 
 class BinarySearchTree {
 
@@ -23,6 +27,6 @@ public:
 	void searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent);
 	BinarySearchNode* getMinKey(BinarySearchNode* curr);
 	BinarySearchNode* inOrderByIndexWrapper(int k);
-	void inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode* kNode, int k);
+	int inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode** kNode, int k, int counter);
 	void HandleError();
 };

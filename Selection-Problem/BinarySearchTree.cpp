@@ -155,21 +155,27 @@ BinarySearchNode* BinarySearchTree::getMinKey(BinarySearchNode* curr) {
 
 BinarySearchNode* BinarySearchTree::inOrderByIndexWrapper(int k) {
 
-	BinarySearchNode* kNode = nullptr;
-	inOrderByIndex(root, kNode, k);
+	int counter = 0;
+	BinarySearchNode* kNode;
+	inOrderByIndex(root, &kNode, k, counter);
 	return kNode;
 }
 
-void BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode* kNode, int k)
+int BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode** kNode, int k, int counter)
 {
-	
+
 	if (currRoot != nullptr) {
-		inOrderByIndex(currRoot->getLeft(), kNode, --k);
-		if (k == 0) {
-			kNode = currRoot;
+		counter = inOrderByIndex(currRoot->getLeft(), kNode, k, counter);
+		counter = counter + 1;
+		cout << counter << " ";
+		if (k == counter) {
+			*kNode = currRoot;
 		}
-		inOrderByIndex(currRoot->getRight(), kNode,--k);
+		cout << currRoot->getPerson()->getPersonId() << " ";
+		counter = inOrderByIndex(currRoot->getRight(), kNode, k, counter);
 	}
+
+	return counter;
 }
 
 void BinarySearchTree:: HandleError() {
