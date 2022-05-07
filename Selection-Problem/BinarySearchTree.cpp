@@ -167,11 +167,9 @@ int BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNod
 	if (currRoot != nullptr) {
 		counter = inOrderByIndex(currRoot->getLeft(), kNode, k, counter);
 		counter = counter + 1;
-		cout << counter << " ";
 		if (k == counter) {
 			*kNode = currRoot;
 		}
-		cout << currRoot->getPerson()->getPersonId() << " ";
 		counter = inOrderByIndex(currRoot->getRight(), kNode, k, counter);
 	}
 

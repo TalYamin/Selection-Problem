@@ -22,7 +22,7 @@ void main() {
 
 	getInputFromUser(seed,numOfPersons, personArr, k);
 	srand(seed);
-	//p = randSelection(personArr, k, numComp);
+	p = randSelection(personArr, k, numComp);
 	p = BST(personArr, k, numComp);
 }
 

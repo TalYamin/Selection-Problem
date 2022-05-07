@@ -2,10 +2,7 @@
 
 #include "BinarySearchNode.h"
 #include <vector>
-#include<iostream> //for test
 
-
-using namespace std; //for test
 
 class BinarySearchTree {
 
