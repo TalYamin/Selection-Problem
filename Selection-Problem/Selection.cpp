@@ -73,9 +73,9 @@ int partition(vector<Person>& personArr, int left, int right, int randIndex, int
 
 const Person& BST(vector<Person>& personArr, int k, int& numComp)
 {
-	BinarySearchTree* bst = new BinarySearchTree();
+	BinarySearchTree bst;
 	BinarySearchNode* res;
-	bst->buildBST(personArr, numComp);
-	res = bst->inOrderByIndexWrapper(k);
+	bst.buildBST(personArr, numComp);
+	res = bst.inOrderByIndexWrapper(k);
 	return *(res->getPerson());
 }

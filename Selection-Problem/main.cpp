@@ -23,7 +23,10 @@ void main() {
 	getInputFromUser(seed,numOfPersons, personArr, k);
 	srand(seed);
 	p = randSelection(personArr, k, numComp);
+	cout << "RandSelection: " << p << " " << numComp << " comparisons" << endl;
 	p = BST(personArr, k, numComp);
+	cout << "BST: " << p << " " << numComp << " comparisons" << endl;
+
 }
 
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k) {
