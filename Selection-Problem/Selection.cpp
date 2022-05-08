@@ -19,6 +19,7 @@ const Person& selectHeap(vector<Person>& personArr, int k, int& numComp)
 	{
 		p = heap->deleteMin(numComp);
 	}
+	delete heap;
 	return *p;
 }
 
