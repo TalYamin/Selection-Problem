@@ -178,8 +178,6 @@ int BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNod
 
 BinarySearchTree::~BinarySearchTree() {
 	delete root;
-
-
 }
 
 
