@@ -32,10 +32,10 @@ Person* select(vector<Person>& personArr, int left, int right, int k, int& numCo
 	randIndex = left + (rand() % (right - left + 1));
 	pivotIndex = partition(personArr, left, right, randIndex, numComp);
 	leftPart = pivotIndex - left + 1;
-	if (k == leftPart) {
+	if (numComp++, k == leftPart) {
 		return &personArr[pivotIndex];
 	}
-	if (k < leftPart) {
+	if (numComp++, k < leftPart) {
 		return select(personArr, left, pivotIndex - 1, k, numComp);
 	}
 	else {
@@ -87,7 +87,7 @@ const Person& BST(vector<Person>& personArr, int k, int& numComp)
 	BinarySearchTree bst;
 	BinarySearchNode* res;
 	bst.buildBST(personArr, numComp);
-	res = bst.inOrderByIndexWrapper(k);
+	res = bst.inOrderByIndexWrapper(k,numComp);
 	return *(res->getPerson());
 }
 

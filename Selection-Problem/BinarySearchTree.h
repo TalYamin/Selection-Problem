@@ -17,7 +17,7 @@ public:
 
 	//public functions
 	void buildBST(vector<Person>& personArr, int& numComp);
-	BinarySearchNode* inOrderByIndexWrapper(int k);
+	BinarySearchNode* inOrderByIndexWrapper(int k, int& numComp);
 
 	//private functions
 private:
@@ -28,5 +28,5 @@ private:
 	void deleteFromBST(BinarySearchNode*& currRoot, int personId, int& numComp);
 	void searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent, int& numComp);
 	BinarySearchNode* getMinKey(BinarySearchNode* curr);
-	int inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode** kNode, int k, int counter);
+	int inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode** kNode, int k, int counter, int& numComp);
 };
