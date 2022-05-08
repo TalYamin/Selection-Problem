@@ -65,11 +65,7 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 void isValidInput(vector<Person>& personArr, int numOfPersons)
 {
 	bool isValid = true;
-	personArr.erase(unique(personArr.begin(), personArr.end(), comparePersonId), personArr.end());
-	if (personArr.size() != numOfPersons)
-	{
-		handleError();
-	}
+	
 
 }
 
