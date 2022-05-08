@@ -114,7 +114,6 @@ bool Heap::isEmpty()
 	if (data.size() < 1)
 		return true;
 	return false;
-	return false;
 }
 
 void Heap::insert(Person* p, int& numComp)
