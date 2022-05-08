@@ -4,6 +4,7 @@
 #include "Selection.h"
 #include <algorithm>
 #include <vector>
+#include "Utils.h"
 #define DELIIMITER ' '
 
 using namespace std;
@@ -23,10 +24,8 @@ void main() {
 
 	getInputFromUser(seed, numOfPersons, personArr, k);
 	personArr.erase(unique(personArr.begin(), personArr.end(), comparePersonId),personArr.end());
-	if (personArr.size() != numOfPersons)
-	{
-		cout << "invalid input";
-		exit(1);
+	if (personArr.size() != numOfPersons){
+		HandleError();
 	}
 
 	

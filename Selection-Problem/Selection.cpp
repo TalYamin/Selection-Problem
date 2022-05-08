@@ -14,10 +14,10 @@ const Person& selectHeap(vector<Person>& personArr, int k, int& numComp)
 {
 	Person* p = nullptr;
 	Heap* heap =new Heap(personArr.size());
-	heap->buildHeap(personArr);
+	heap->buildHeap(personArr,numComp);
 	for (int i = 0;i < k;i++)
 	{
-		p = heap->deleteMin();
+		p = heap->deleteMin(numComp);
 	}
 	return *p;
 }
@@ -89,3 +89,5 @@ const Person& BST(vector<Person>& personArr, int k, int& numComp)
 	res = bst.inOrderByIndexWrapper(k);
 	return *(res->getPerson());
 }
+
+

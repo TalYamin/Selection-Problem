@@ -1,6 +1,7 @@
 #pragma once
 
 #include "BinarySearchNode.h"
+#include "Utils.h"
 #include <vector>
 
 
@@ -25,5 +26,4 @@ public:
 	BinarySearchNode* getMinKey(BinarySearchNode* curr);
 	BinarySearchNode* inOrderByIndexWrapper(int k);
 	int inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode** kNode, int k, int counter);
-	void HandleError();
 };

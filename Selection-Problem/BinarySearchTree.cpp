@@ -176,6 +176,3 @@ int BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNod
 	return counter;
 }
 
-void BinarySearchTree:: HandleError() {
-	exit(1);
-}
