@@ -14,16 +14,6 @@ int Heap::Right(int node)
 	return (2 * node + 2);
 }
 
-void Heap::getMin(int left, int node, int& min, int& numComp)
-{
-
-	if (numComp++, (left < heapSize) && (data[left]->getPersonId() < data[node]->getPersonId()))
-	{
-		min = left;
-	}
-	else
-		min = node;
-}
 
 void Heap::heapify(int node, int& numComp)
 {

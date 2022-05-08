@@ -24,6 +24,5 @@ private:
 	static int Left(int node);
 	static int Right(int node);
 	static int Parent(int node);
-	void getMin(int left, int node, int& min, int& numComp);
 	void heapify(int node, int& numComp);
 };
