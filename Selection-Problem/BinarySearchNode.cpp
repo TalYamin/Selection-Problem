@@ -8,6 +8,9 @@ BinarySearchNode::BinarySearchNode(Person* _person, BinarySearchNode* _left, Bin
 }
 
 BinarySearchNode::~BinarySearchNode(){
+	
+	delete left;
+	delete right;
 
 }
 

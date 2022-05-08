@@ -1,7 +1,6 @@
 #include "BinarySearchTree.h"
 
-BinarySearchTree::~BinarySearchTree(){
-}
+
 
 bool BinarySearchTree::isEmptyBST()
 {
@@ -175,4 +174,10 @@ int BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNod
 
 	return counter;
 }
+
+
+BinarySearchTree::~BinarySearchTree() {
+	delete root;
+}
+
 

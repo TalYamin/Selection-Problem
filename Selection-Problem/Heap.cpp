@@ -60,15 +60,7 @@ void Heap::buildHeap(vector<Person>& arr, int& numComp)
 	}
 }
 
-Heap::~Heap()
-{
-	if (allocated)
-	{
-		for (int i = 0;i < data.size();i++)
-		{
-			delete(data[i]);
-		}
-	}
+Heap::~Heap(){
 }
 
 Person* Heap::min()
