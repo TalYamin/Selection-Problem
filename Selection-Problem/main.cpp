@@ -33,8 +33,10 @@ void main() {
 	srand(seed);
 	p = randSelection(personArr, k, numComp);
 	cout << "RandSelection: " << p << " " << numComp << " comparisons" << endl;
+	numComp = 0;
 	p = selectHeap(personArr, k, numComp);
 	cout << "selectHeap: " << p << " " << numComp << " comparisons" << endl;
+	numComp = 0;
 	p = BST(personArr, k, numComp);
 	cout << "BST: " << p << " " << numComp << " comparisons" << endl;
 
