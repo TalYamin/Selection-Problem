@@ -4,10 +4,12 @@
 #include "Selection.h"
 #include <algorithm>
 #include <vector>
+#include "Utils.h"
 #define DELIIMITER ' '
 
 using namespace std;
 
+void isValidInput(std::vector<Person>& personArr, int numOfPersons);
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k);
 void extractPersonFromInput(string input, Person& p);
 bool comparePersonId(Person first, Person second);
@@ -19,19 +21,20 @@ void main() {
 	int k = 0;
 	int numComp = 0;
 	vector<Person> personArr;
+	Person p;
 
 	getInputFromUser(seed, numOfPersons, personArr, k);
-	personArr.erase(unique(personArr.begin(), personArr.end(), comparePersonId),personArr.end());
-	if (personArr.size() != numOfPersons)
-	{
-		cout << "invalid input";
-		exit(1);
-	}
-
+	isValidInput(personArr, numOfPersons);
 	
-	selectHeap(personArr, k, numComp);
 	srand(seed);
-	randSelection(personArr, k, numComp);
+	p = randSelection(personArr, k, numComp);
+	cout << "RandSelection: " << p << " " << numComp << " comparisons" << endl;
+	numComp = 0;
+	p = selectHeap(personArr, k, numComp);
+	cout << "selectHeap: " << p << " " << numComp << " comparisons" << endl;
+	numComp = 0;
+	p = BST(personArr, k, numComp);
+	cout << "BST: " << p << " " << numComp << " comparisons" << endl;
 
 }
 
@@ -58,6 +61,15 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 	getline(cin, input);
 	k = stoi(input);
 }
+
+void isValidInput(vector<Person>& personArr, int numOfPersons)
+{
+	bool isValid = true;
+	
+
+}
+
+
 
 void extractPersonFromInput(string input, Person& p) {
 

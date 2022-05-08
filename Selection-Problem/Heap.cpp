@@ -14,30 +14,20 @@ int Heap::Right(int node)
 	return (2 * node + 2);
 }
 
-void Heap::getMin(int left, int node, int& min)
-{
 
-	if ((left < heapSize) && (data[left]->getPersonId() < data[node]->getPersonId()))
-	{
-		min = left;
-	}
-	else
-		min = node;
-}
-
-void Heap::heapify(int node)
+void Heap::heapify(int node, int& numComp)
 {
 	int min;
 	int left = Left(node);
 	int right = Right(node);
-	if ((left < heapSize) && (data[left]->getPersonId() < data[node]->getPersonId()))
+	if (numComp++, (left < heapSize) && (data[left]->getPersonId() < data[node]->getPersonId()))
 	{
 		min = left;
 	}
 	else {
 		min = node;
 	}
-	if ((right < heapSize) && (data[right]->getPersonId() < data[min]->getPersonId()))
+	if (numComp++, (right < heapSize) && (data[right]->getPersonId() < data[min]->getPersonId()))
 	{
 		min = right;
 	}
@@ -45,7 +35,7 @@ void Heap::heapify(int node)
 	if (min != node)
 	{
 		swap(data[node], data[min]);
-		heapify(min);
+		heapify(min,numComp);
 	}
 }
 
@@ -56,7 +46,7 @@ Heap::Heap(int max)
 	allocated = true;
 }
 
-void Heap::buildHeap(vector<Person>& arr)
+void Heap::buildHeap(vector<Person>& arr, int& numComp)
 {
 	heapSize = arr.size();
 	data.resize(arr.size());
@@ -66,7 +56,7 @@ void Heap::buildHeap(vector<Person>& arr)
 	}
 	for (int i = arr.size() / 2 - 1;i >= 0;i--)
 	{
-		heapify(i);
+		heapify(i,numComp);
 	}
 }
 
@@ -83,31 +73,29 @@ Heap::~Heap()
 
 Person* Heap::min()
 {
-	if (isEmpty())
-	{
-		cout << "Handle Error";
+	if (isEmpty()){
+		handleError();
 	}
 	return data[0];
 }
 
-Person* Heap::deleteMin()
+Person* Heap::deleteMin(int& numComp)
 {
-	if (isEmpty())
-	{
-		cout << "Handle Error";
+	if (isEmpty()){
+		handleError();
 	}
 	Person* p = data[0];
 	heapSize--;
 	data[0] = data[heapSize];
-	heapify(0);
+	heapify(0,numComp);
 	return p;
 }
 
-void Heap::makeEmpty()
+void Heap::makeEmpty(int& numComp)
 {
 	while (heapSize != 0)
 	{
-		deleteMin();
+		deleteMin(numComp);
 	}
 }
 
@@ -116,19 +104,16 @@ bool Heap::isEmpty()
 	if (data.size() < 1)
 		return true;
 	return false;
-	return false;
 }
 
-void Heap::insert(Person* p)
+void Heap::insert(Person* p, int& numComp)
 {
-	if (heapSize == data.size())
-	{
-		cout << "handle Error";
-		return;
+	if (heapSize == data.size()){
+		handleError();
 	}
 	int i = heapSize;
 	heapSize++;
-	while ((i > 0) && data[Parent(i)]->getPersonId() > p->getPersonId())
+	while (numComp++, (i > 0) && data[Parent(i)]->getPersonId() > p->getPersonId())
 	{
 		data[i] = data[Parent(i)];
 		i = Parent(i);

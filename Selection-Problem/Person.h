@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <ostream>
+
 using namespace std;
 
 
@@ -21,4 +23,7 @@ public:
 	void setPersonId(int _personId);
 	string getPersonName();
 	void setPerosnName(string _personName);
+	friend ostream& operator<<(ostream& os, const Person& p) {
+		return os << p.personId << " " << p.personName;
+	}
 };
