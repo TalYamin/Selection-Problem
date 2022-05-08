@@ -1,6 +1,6 @@
 #include "Utils.h"
 
-void HandleError() {
+void handleError() {
 	cout << "invalid input";
 	exit(1);
 }

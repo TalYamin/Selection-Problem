@@ -74,7 +74,7 @@ Heap::~Heap()
 Person* Heap::min()
 {
 	if (isEmpty()){
-		HandleError();
+		handleError();
 	}
 	return data[0];
 }
@@ -82,7 +82,7 @@ Person* Heap::min()
 Person* Heap::deleteMin(int& numComp)
 {
 	if (isEmpty()){
-		HandleError();
+		handleError();
 	}
 	Person* p = data[0];
 	heapSize--;
@@ -109,7 +109,7 @@ bool Heap::isEmpty()
 void Heap::insert(Person* p, int& numComp)
 {
 	if (heapSize == data.size()){
-		HandleError();
+		handleError();
 	}
 	int i = heapSize;
 	heapSize++;

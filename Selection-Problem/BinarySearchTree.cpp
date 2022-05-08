@@ -44,7 +44,7 @@ BinarySearchNode* BinarySearchTree::FindInBST(int personId, int& numComp) {
 void BinarySearchTree::insertToBST(Person* p, int& numComp) {
 
 	if (FindInBST(p->getPersonId(), numComp) != nullptr) {
-		HandleError();
+		handleError();
 	}
 	BinarySearchNode* temp = root;
 	BinarySearchNode* parent = nullptr;

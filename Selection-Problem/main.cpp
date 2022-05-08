@@ -9,6 +9,7 @@
 
 using namespace std;
 
+void isValidInput(std::vector<Person>& personArr, int numOfPersons);
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k);
 void extractPersonFromInput(string input, Person& p);
 bool comparePersonId(Person first, Person second);
@@ -23,12 +24,7 @@ void main() {
 	Person p;
 
 	getInputFromUser(seed, numOfPersons, personArr, k);
-	personArr.erase(unique(personArr.begin(), personArr.end(), comparePersonId),personArr.end());
-	if (personArr.size() != numOfPersons){
-		HandleError();
-	}
-
-	
+	isValidInput(personArr, numOfPersons);
 	
 	srand(seed);
 	p = randSelection(personArr, k, numComp);
@@ -65,6 +61,19 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 	getline(cin, input);
 	k = stoi(input);
 }
+
+void isValidInput(vector<Person>& personArr, int numOfPersons)
+{
+	bool isValid = true;
+	personArr.erase(unique(personArr.begin(), personArr.end(), comparePersonId), personArr.end());
+	if (personArr.size() != numOfPersons)
+	{
+		handleError();
+	}
+
+}
+
+
 
 void extractPersonFromInput(string input, Person& p) {
 

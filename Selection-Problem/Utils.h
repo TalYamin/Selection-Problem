@@ -3,4 +3,4 @@
 
 using namespace std;
 
-void HandleError();
+void handleError();
