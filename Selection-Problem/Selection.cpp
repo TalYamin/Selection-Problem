@@ -1,14 +1,26 @@
 #include "Selection.h"
+#include "Heap.h"
 
 const Person& randSelection(vector<Person>& personArr, int k, int& numComp)
 {
 	Person* p;
 	int left = 0;
-	int right = personArr.size()-1;
+	int right = personArr.size() - 1;
 	p = select(personArr, left, right, k, numComp);
 	return *p;
 }
 
+const Person& selectHeap(vector<Person>& personArr, int k, int& numComp)
+{
+	Person* p = nullptr;
+	Heap* heap =new Heap(personArr.size());
+	heap->buildHeap(personArr);
+	for (int i = 0;i < k;i++)
+	{
+		p = heap->deleteMin();
+	}
+	return *p;
+}
 
 Person* select(vector<Person>& personArr, int left, int right, int k, int& numComp) {
 
@@ -19,7 +31,7 @@ Person* select(vector<Person>& personArr, int left, int right, int k, int& numCo
 	randIndex = left + (rand() % (right - left + 1));
 	pivotIndex = partition(personArr, left, right, randIndex, numComp);
 	leftPart = pivotIndex - left + 1;
-	if (k == leftPart){
+	if (k == leftPart) {
 		return &personArr[pivotIndex];
 	}
 	if (k < leftPart) {
