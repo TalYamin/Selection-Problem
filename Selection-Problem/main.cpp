@@ -66,7 +66,7 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 
 void isValidInput(vector<Person>& personArr, int numOfPersons, int k)
 {
-	if ((personArr.size() != numOfPersons) || (k >= personArr.size()) || k < 0)
+	if ((personArr.size() != numOfPersons) || (k >= numOfPersons) || k < 0)
 	{
 		handleError();
 	}
