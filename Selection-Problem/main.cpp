@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void isValidInput(std::vector<Person>& personArr, int numOfPersons);
+void isValidInput(std::vector<Person>& personArr, int numOfPersons, int k);
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k);
 void extractPersonFromInput(string input, Person& p);
 bool comparePersonId(Person first, Person second);
@@ -24,8 +24,7 @@ void main() {
 	Person p;
 
 	getInputFromUser(seed, numOfPersons, personArr, k);
-	isValidInput(personArr, numOfPersons);
-	
+
 	srand(seed);
 	p = randSelection(personArr, k, numComp);
 	cout << "RandSelection: " << p << " " << numComp << " comparisons" << endl;
@@ -56,17 +55,21 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 	for (int i = 0; i < numOfPersons; i++) {
 		getline(cin, input);
 		extractPersonFromInput(input, p);
-		personArr.push_back(p);
+		if (find(personArr.begin(), personArr.end(), p) == personArr.end())
+			personArr.push_back(p);
 	}
 	getline(cin, input);
 	k = stoi(input);
+	isValidInput(personArr, numOfPersons, k);
+
 }
 
-void isValidInput(vector<Person>& personArr, int numOfPersons)
+void isValidInput(vector<Person>& personArr, int numOfPersons, int k)
 {
-	bool isValid = true;
-	
-
+	if ((personArr.size() != numOfPersons) || (k >= personArr.size()) || k < 0)
+	{
+		handleError();
+	}
 }
 
 
