@@ -66,7 +66,7 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 
 void isValidInput(vector<Person>& personArr, int numOfPersons, int k)
 {
-	if ((personArr.size() != numOfPersons) || (k >= numOfPersons) || k < 0)
+	if ((numOfPersons < 0) || (personArr.size() != numOfPersons) || (k >= numOfPersons) || (k < 1))
 	{
 		handleError();
 	}
@@ -77,6 +77,10 @@ void isValidInput(vector<Person>& personArr, int numOfPersons, int k)
 void extractPersonFromInput(string input, Person& p) {
 
 	size_t pos = input.find(DELIIMITER);
+	if (pos == string::npos)
+	{
+		handleError();
+	}
 	string token = input.substr(0, pos);
 	p.setPersonId(stoi(token));
 	token = input.erase(0, pos + 1);//include size of ' '
