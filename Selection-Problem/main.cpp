@@ -13,6 +13,11 @@ void isValidInput(std::vector<Person>& personArr, int numOfPersons, int k);
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k);
 void extractPersonFromInput(string input, Person& p);
 bool comparePersonId(Person first, Person second);
+void simplifyWhitespace(string& dst, const string src);
+void ignoreSpacesUntilChar(const std::string& src, int& srcIndex);
+
+
+void ignoreSpacesUntilChar(const std::string& src, int& srcIndex);
 
 void main() {
 
@@ -76,14 +81,46 @@ void isValidInput(vector<Person>& personArr, int numOfPersons, int k)
 
 void extractPersonFromInput(string input, Person& p) {
 
-	size_t pos = input.find(DELIIMITER);
+	string inputWithoutDuplicationSpaces;
+	simplifyWhitespace(inputWithoutDuplicationSpaces, input);
+	size_t pos = inputWithoutDuplicationSpaces.find(DELIIMITER);
 	if (pos == string::npos)
 	{
 		handleError();
 	}
-	string token = input.substr(0, pos);
+
+	string token = inputWithoutDuplicationSpaces.substr(0, pos);
 	p.setPersonId(stoi(token));
-	token = input.erase(0, pos + 1);//include size of ' '
+	token = inputWithoutDuplicationSpaces.erase(0, pos + 1);//include size of ' '
+	pos = inputWithoutDuplicationSpaces.find(DELIIMITER);
+	if (pos == string::npos)
+	{
+		handleError();
+	}
 	p.setPerosnName(token);
 }
+
+void simplifyWhitespace(string& dst, const string src)
+{
+	int srcIndex = 0;
+	ignoreSpacesUntilChar(src, srcIndex);
+	if (isspace(src[srcIndex]))
+		srcIndex++;
+	while (src[srcIndex] !='\0')
+	{
+		dst += src[srcIndex];
+		ignoreSpacesUntilChar(src, srcIndex);
+		srcIndex++;
+	}
+	dst += '\0';
+}
+
+void ignoreSpacesUntilChar(const string& src, int& srcIndex)
+{
+	if (isspace(src[srcIndex]))
+		while (isspace(src[srcIndex + 1]))
+			srcIndex++;
+}
+
+
 
