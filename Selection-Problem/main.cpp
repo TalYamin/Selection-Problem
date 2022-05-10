@@ -14,12 +14,9 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 void extractPersonFromInput(string input, Person& p);
 bool comparePersonId(Person first, Person second);
 void simplifyWhitespace(string& dst, const string src);
-void ignoreSpacesUntilChar(const std::string& src, int& srcIndex);
+void ignoreSpacesUntilChar(const std::string& src, size_t& srcIndex);
 
-
-void ignoreSpacesUntilChar(const std::string& src, int& srcIndex);
-
-void main() {
+int main() {
 
 	int seed = 0;
 	int numOfPersons = 0;
@@ -39,7 +36,7 @@ void main() {
 	numComp = 0;
 	p = BST(personArr, k, numComp);
 	cout << "BST: " << p << " " << numComp << " comparisons" << endl;
-
+	return 0;
 }
 
 bool comparePersonId(Person first, Person second)
@@ -102,7 +99,7 @@ void extractPersonFromInput(string input, Person& p) {
 
 void simplifyWhitespace(string& dst, const string src)
 {
-	int srcIndex = 0;
+	size_t srcIndex = 0;
 	ignoreSpacesUntilChar(src, srcIndex);
 	if (isspace(src[srcIndex]))
 		srcIndex++;
@@ -115,8 +112,9 @@ void simplifyWhitespace(string& dst, const string src)
 	dst += '\0';
 }
 
-void ignoreSpacesUntilChar(const string& src, int& srcIndex)
+void ignoreSpacesUntilChar(const string& src, size_t& srcIndex)
 {
+
 	if (isspace(src[srcIndex]))
 		while (isspace(src[srcIndex + 1]))
 			srcIndex++;
