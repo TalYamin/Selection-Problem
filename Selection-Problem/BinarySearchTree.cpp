@@ -42,9 +42,6 @@ BinarySearchNode* BinarySearchTree::FindInBST(int personId, int& numComp) {
 
 void BinarySearchTree::insertToBST(Person* p, int& numComp) {
 
-	if (FindInBST(p->getPersonId(), numComp) != nullptr) {
-		handleError();
-	}
 	BinarySearchNode* temp = root;
 	BinarySearchNode* parent = nullptr;
 	BinarySearchNode* newNode;
@@ -132,7 +129,7 @@ void BinarySearchTree::deleteFromBST(BinarySearchNode*& currRoot, int personId, 
 
 void BinarySearchTree::searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent, int& numComp) {
 
-	while (numComp++, curr != nullptr && curr->getPerson()->getPersonId() != personId) { 
+	while (curr != nullptr && numComp++ && curr->getPerson()->getPersonId() != personId) {
 		parent = curr;
 
 		if (numComp++, personId < curr->getPerson()->getPersonId()) {
