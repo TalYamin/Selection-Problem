@@ -17,6 +17,7 @@ public:
 	Person() = default;
 	Person(int _personId, string _personName);
 	~Person();
+	bool operator==(const Person& p);
 
 	//gettters + setters
 	int getPersonId();
