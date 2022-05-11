@@ -145,7 +145,7 @@ void Heap::insert(Person* p, int& numComp)
 	}
 	int i = heapSize;
 	heapSize++;
-	while (numComp++, (i > 0) && data[Parent(i)]->getPersonId() > p->getPersonId())
+	while ((i > 0) && ++numComp && data[Parent(i)]->getPersonId() > p->getPersonId())
 	{
 		data[i] = data[Parent(i)];
 		i = Parent(i);

@@ -154,7 +154,7 @@ of this node.
 */
 void BinarySearchTree::searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent, int& numComp) {
 
-	while (curr != nullptr && numComp++ && curr->getPerson()->getPersonId() != personId) {
+	while (curr != nullptr && ++numComp && curr->getPerson()->getPersonId() != personId) {
 		parent = curr;
 
 		if (numComp++, personId < curr->getPerson()->getPersonId()) {
