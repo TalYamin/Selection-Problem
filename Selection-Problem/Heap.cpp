@@ -1,33 +1,47 @@
 #include "Heap.h"
 #include <iostream>
 
+/*
+This function returns the index of parent node
+*/
 int Heap::Parent(int node)
 {
 	return (node - 1) / 2;
 }
+
+/*
+This function returns the the index of left child
+*/
 int Heap::Left(int node)
 {
 	return (2 * node + 1);
 }
+
+/*
+This function returns the index of right child
+*/
 int Heap::Right(int node)
 {
 	return (2 * node + 2);
 }
 
-
+/*
+This function is used to fix heap structure. 
+Function makes comparsions between nodes, and raise to top the minimum value.
+*/
 void Heap::heapify(int node, int& numComp)
 {
 	int min;
 	int left = Left(node);
 	int right = Right(node);
-	if (numComp++, (left < heapSize) && (data[left]->getPersonId() < data[node]->getPersonId()))
+	if (numComp++, (data[left]->getPersonId() < data[node]->getPersonId()) && (left < heapSize))
 	{
 		min = left;
 	}
 	else {
 		min = node;
 	}
-	if (numComp++, (right < heapSize) && (data[right]->getPersonId() < data[min]->getPersonId()))
+	if (numComp++, (data[right]->getPersonId() < data[min]->getPersonId()) && (right < heapSize))
 	{
 		min = right;
 	}
@@ -39,6 +53,9 @@ void Heap::heapify(int node, int& numComp)
 	}
 }
 
+/*
+ctor of heap with 1 parameter
+*/
 Heap::Heap(int max)
 {
 	data.resize(max);
@@ -46,6 +63,10 @@ Heap::Heap(int max)
 	allocated = true;
 }
 
+/*
+This function builds heap. Function receives person array 
+and insert the elemetns to the array which represent heap.
+*/
 void Heap::buildHeap(vector<Person>& arr, int& numComp)
 {
 	heapSize = arr.size();
@@ -60,9 +81,15 @@ void Heap::buildHeap(vector<Person>& arr, int& numComp)
 	}
 }
 
+/*
+dtor of heap
+*/
 Heap::~Heap(){
 }
 
+/*
+Function returens the minimum from heap.
+*/
 Person* Heap::min()
 {
 	if (isEmpty()){
@@ -71,6 +98,9 @@ Person* Heap::min()
 	return data[0];
 }
 
+/*
+Function delete the minimum from heap.
+*/
 Person* Heap::deleteMin(int& numComp)
 {
 	if (isEmpty()){
@@ -83,6 +113,9 @@ Person* Heap::deleteMin(int& numComp)
 	return p;
 }
 
+/*
+This function is used to make heap empty.
+*/
 void Heap::makeEmpty(int& numComp)
 {
 	while (heapSize != 0)
@@ -91,6 +124,9 @@ void Heap::makeEmpty(int& numComp)
 	}
 }
 
+/*
+This function checks if heap is empty.
+*/
 bool Heap::isEmpty()
 {
 	if (data.size() < 1)
@@ -98,6 +134,10 @@ bool Heap::isEmpty()
 	return false;
 }
 
+/*
+This function repsonible to insert person pointer as an
+elemnet to heap.
+*/
 void Heap::insert(Person* p, int& numComp)
 {
 	if (heapSize == data.size()){
