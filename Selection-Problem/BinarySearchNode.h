@@ -4,6 +4,7 @@
 
 class BinarySearchNode {
 	
+	//data members
 	Person* person;
 	BinarySearchNode* left;
 	BinarySearchNode* right;

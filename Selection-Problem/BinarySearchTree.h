@@ -7,6 +7,7 @@
 
 class BinarySearchTree {
 
+	//data members
 	BinarySearchNode* root = nullptr;
 
 public:
