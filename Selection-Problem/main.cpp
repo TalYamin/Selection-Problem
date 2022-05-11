@@ -12,10 +12,22 @@ using namespace std;
 void isValidInput(std::vector<Person>& personArr, int numOfPersons, int k);
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k);
 void extractPersonFromInput(string input, Person& p);
-bool comparePersonId(Person first, Person second);
 void simplifyWhitespace(string& dst, const string src);
 void ignoreSpacesUntilChar(const std::string& src, size_t& srcIndex);
+void printResult(const string& resultType, const Person& person, const int& numComp);
 
+
+/*
+The aim of the program is to implement a number of solutions to the problem of selection, 
+research and analysis the differences between the different solutions in relation to k and n.
+There are three soultions which are checked in program: 
+1) random selection 
+2) selection by heap
+3) selection by BST
+Program receives array of persons and required k size,
+then prints the k largest person id as result and in addition prints the number 
+of comprasion which have been done in any type of solution.
+*/
 int main() {
 
 	int seed = 0;
@@ -29,23 +41,23 @@ int main() {
 
 	srand(seed);
 	p = randSelection(personArr, k, numComp);
-	cout << "RandSelection: " << p << " " << numComp << " comparisons" << endl;
+	printResult("RandSelection: ", p, numComp);
 	numComp = 0;
 	p = selectHeap(personArr, k, numComp);
-	cout << "selectHeap: " << p << " " << numComp << " comparisons" << endl;
+	printResult("selectHeap: ", p, numComp);
 	numComp = 0;
 	p = BST(personArr, k, numComp);
-	cout << "BST: " << p << " " << numComp << " comparisons" << endl;
+	printResult("BST: ", p, numComp);
 	return 0;
 }
 
-bool comparePersonId(Person first, Person second)
-{
-	if (first.getPersonId() != second.getPersonId())
-		return false;
-	return true;
-}
 
+
+/*
+This function responsible to get input from user.
+In case there are persons with duplicate id, only one of them inserted to person array.
+Then there is input validation which checks the input is valid.
+*/
 void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, int& k) {
 
 	Person p;
@@ -66,6 +78,9 @@ void getInputFromUser(int& seed, int& numOfPersons, vector<Person>& personArr, i
 
 }
 
+/*
+Function check if the input is valid. 
+*/
 void isValidInput(vector<Person>& personArr, int numOfPersons, int k)
 {
 	if ((numOfPersons < 0) || (personArr.size() != numOfPersons) || (k >= numOfPersons) || (k < 1))
@@ -75,7 +90,12 @@ void isValidInput(vector<Person>& personArr, int numOfPersons, int k)
 }
 
 
-
+/*
+This function is used to extract person from user.
+At first, taking the string and simplfy it to be without duplicate spaces. 
+Then, sepearte the infromation according to space betwwen the text.
+Then, initialize the data members id and name.
+*/
 void extractPersonFromInput(string input, Person& p) {
 
 	string inputWithoutDuplicationSpaces;
@@ -97,6 +117,9 @@ void extractPersonFromInput(string input, Person& p) {
 	p.setPerosnName(token);
 }
 
+/*
+This function is used to make string more simple by remove duplicate spaces.
+*/
 void simplifyWhitespace(string& dst, const string src)
 {
 	size_t srcIndex = 0;
@@ -112,6 +135,10 @@ void simplifyWhitespace(string& dst, const string src)
 	dst += '\0';
 }
 
+/*
+This function responible to get a string and to ignoer spaces until 
+enconter another char.
+*/
 void ignoreSpacesUntilChar(const string& src, size_t& srcIndex)
 {
 
@@ -120,5 +147,12 @@ void ignoreSpacesUntilChar(const string& src, size_t& srcIndex)
 			srcIndex++;
 }
 
+/*
+This function prints the results.
+*/
+void printResult(const string& resultType, const Person& person, const int& numComp) {
 
+	cout << resultType << person << " " << numComp << " comparisons" << endl;
+
+}
 

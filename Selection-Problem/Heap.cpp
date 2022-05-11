@@ -34,14 +34,14 @@ void Heap::heapify(int node, int& numComp)
 	int min;
 	int left = Left(node);
 	int right = Right(node);
-	if (numComp++, (data[left]->getPersonId() < data[node]->getPersonId()) && (left < heapSize))
+	if ((left < heapSize) && ++numComp && (data[left]->getPersonId() < data[node]->getPersonId()))
 	{
 		min = left;
 	}
 	else {
 		min = node;
 	}
-	if (numComp++, (data[right]->getPersonId() < data[min]->getPersonId()) && (right < heapSize))
+	if ((right < heapSize) && ++numComp && (data[right]->getPersonId() < data[min]->getPersonId())) 
 	{
 		min = right;
 	}
