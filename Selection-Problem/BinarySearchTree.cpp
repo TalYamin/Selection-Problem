@@ -167,7 +167,7 @@ void BinarySearchTree::searchKey(BinarySearchNode*& curr, int personId, BinarySe
 }
 
 /*
-Thi function find the current minimum key under the specific node which
+This function finds the current minimum key under the specific node which
 received.
 */
 BinarySearchNode* BinarySearchTree::getMinKey(BinarySearchNode* curr) {
