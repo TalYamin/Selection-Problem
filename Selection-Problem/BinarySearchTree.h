@@ -7,6 +7,7 @@
 
 class BinarySearchTree {
 
+	//data members
 	BinarySearchNode* root = nullptr;
 
 public:
@@ -19,8 +20,10 @@ public:
 	void buildBST(vector<Person>& personArr, int& numComp);
 	BinarySearchNode* inOrderByIndexWrapper(int k, int& numComp);
 
-	//private functions
+	
 private:
+
+	//private functions
 	bool isEmptyBST();
 	void makeEmptyBST();
 	BinarySearchNode* FindInBST(int personId, int& numComp);

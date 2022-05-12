@@ -1,7 +1,9 @@
 #include "BinarySearchTree.h"
 
 
-
+/*
+Function checks if the binary search tree is empty.
+*/
 bool BinarySearchTree::isEmptyBST()
 {
 	if (root == nullptr){
@@ -10,10 +12,16 @@ bool BinarySearchTree::isEmptyBST()
 	return false;
 }
 
+/*
+This function make the binary search tree empty.
+*/
 void BinarySearchTree::makeEmptyBST(){
 	root = nullptr;
 }
 
+/*
+This function receives person array and insert them to binary search tree.
+*/
 void BinarySearchTree::buildBST(vector<Person>& personArr, int& numComp){
 
 	for (int i = 0; i < personArr.size(); i++){
@@ -22,6 +30,10 @@ void BinarySearchTree::buildBST(vector<Person>& personArr, int& numComp){
 
 }
 
+/*
+This function receive perosn id and find if this id exist in the 
+binary search tree.
+*/
 BinarySearchNode* BinarySearchTree::FindInBST(int personId, int& numComp) {
 
 	BinarySearchNode* currNode = root;
@@ -40,6 +52,11 @@ BinarySearchNode* BinarySearchTree::FindInBST(int personId, int& numComp) {
 	return nullptr;
 }
 
+
+/*
+This function receives person pointer and insert it as a
+node to binary search tree.
+*/
 void BinarySearchTree::insertToBST(Person* p, int& numComp) {
 
 	BinarySearchNode* temp = root;
@@ -67,6 +84,10 @@ void BinarySearchTree::insertToBST(Person* p, int& numComp) {
 	}
 }
 
+/*
+This function is used to delete node from binary search tree, according
+to person id which recevied. 
+*/
 void BinarySearchTree::deleteFromBST(BinarySearchNode*& currRoot, int personId, int& numComp) {
 
 	BinarySearchNode* parent = nullptr;
@@ -126,10 +147,14 @@ void BinarySearchTree::deleteFromBST(BinarySearchNode*& currRoot, int personId, 
 
 }
 
-
+/*
+This function receives person id, function search the node which contains 
+this key in the binary search tree. In addition, function find the parent 
+of this node.
+*/
 void BinarySearchTree::searchKey(BinarySearchNode*& curr, int personId, BinarySearchNode*& parent, int& numComp) {
 
-	while (curr != nullptr && numComp++ && curr->getPerson()->getPersonId() != personId) {
+	while (curr != nullptr && ++numComp && curr->getPerson()->getPersonId() != personId) {
 		parent = curr;
 
 		if (numComp++, personId < curr->getPerson()->getPersonId()) {
@@ -141,6 +166,10 @@ void BinarySearchTree::searchKey(BinarySearchNode*& curr, int personId, BinarySe
 	}
 }
 
+/*
+This function finds the current minimum key under the specific node which
+received.
+*/
 BinarySearchNode* BinarySearchTree::getMinKey(BinarySearchNode* curr) {
 	while (curr->getLeft() != nullptr) {
 		curr = curr->getLeft();
@@ -149,6 +178,10 @@ BinarySearchNode* BinarySearchTree::getMinKey(BinarySearchNode* curr) {
 	return curr;
 }
 
+
+/*
+This function is wrapper function to recursive inOrderByIndex() function.
+*/
 BinarySearchNode* BinarySearchTree::inOrderByIndexWrapper(int k, int& numComp) {
 
 	int counter = 0;
@@ -157,6 +190,11 @@ BinarySearchNode* BinarySearchTree::inOrderByIndexWrapper(int k, int& numComp) {
 	return kNode;
 }
 
+/*
+This is recursive function. Function passes on the nodes of
+binary search tree, by inorder method. And function stops running when
+arrived to relevant index and returns the relevant node.
+*/
 int BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNode** kNode, int k, int counter, int& numComp)
 {
 
@@ -172,7 +210,9 @@ int BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNod
 	return counter;
 }
 
-
+/*
+dtor of BinarySearchTree
+*/
 BinarySearchTree::~BinarySearchTree() {
 	delete root;
 }
