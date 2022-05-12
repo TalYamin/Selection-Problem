@@ -201,7 +201,7 @@ int BinarySearchTree::inOrderByIndex(BinarySearchNode* currRoot, BinarySearchNod
 	if (currRoot != nullptr) {
 		counter = inOrderByIndex(currRoot->getLeft(), kNode, k, counter,numComp);
 		counter = counter + 1;
-		if (numComp++, k == counter) {
+		if (k == counter) {
 			*kNode = currRoot;
 		}
 		counter = inOrderByIndex(currRoot->getRight(), kNode, k, counter,numComp);
