@@ -132,7 +132,6 @@ void simplifyWhitespace(string& dst, const string src)
 		ignoreSpacesUntilChar(src, srcIndex);
 		srcIndex++;
 	}
-	dst += '\0';
 }
 
 /*
